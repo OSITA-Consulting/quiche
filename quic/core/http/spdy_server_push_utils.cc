@@ -172,7 +172,7 @@ std::string SpdyServerPushUtils::GetPushPromiseUrl(absl::string_view scheme,
   url::StdStringCanonOutput canon_host_output(&canon_host);
   canon_component.reset();
   if (!url::CanonicalizeHost(authority.data(), host_component,
-                             &canon_host_output, &canon_component) ||
+                             &canon_host_output, &canon_component, false) ||
       !canon_component.is_nonempty() || canon_component.begin != 0) {
     return std::string();
   }
